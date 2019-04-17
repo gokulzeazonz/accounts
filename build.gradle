@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'com.zeazonz'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+mainClassName = 'com.zeazonz.App'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.hibernate:hibernate-core:5.4.2.Final'
+    implementation 'com.h2database:h2:1.4.199'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.1'
+    testImplementation 'org.dbunit:dbunit:2.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.4.1'
+}
+
+test {
+    useJUnitPlatform()
+}
