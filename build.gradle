@@ -15,11 +15,14 @@ repositories {
 
 dependencies {
     implementation 'org.hibernate:hibernate-core:5.4.2.Final'
-    implementation 'com.h2database:h2:1.4.199'
+//    implementation 'com.h2database:h2:1.4.199'
 
     implementation 'com.google.guava:guava:27.1-jre'
 
     implementation 'commons-validator:commons-validator:1.4.0'
+    
+    //postgres
+    implementation 'org.postgresql:postgresql:42.2.5'
 
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.1'

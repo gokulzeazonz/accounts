@@ -2,19 +2,24 @@ package com.zeazonz.application;
 
 import com.zeazonz.domain.model.financial.Expenditure;
 import com.zeazonz.domain.model.financial.Income;
+import com.zeazonz.domain.model.user.Email;
 import com.zeazonz.domain.model.user.User;
+import com.zeazonz.exception.UserInvalidException;
 
 import java.util.Date;
+import java.util.Optional;
 
 public interface AccountManagement {
+
+    Optional<User> isValidUser(String email, String password)  throws UserInvalidException;
 
     void addNewUser(User user);
 
     void deleteMyAccount(User user);
 
-    void addExpense(Long userId,Expenditure expense);
+    void addExpense(User user,Expenditure expense, String categoryName);
 
-    void addIncome(Long userId,Income income);
+    void addIncome(User user,Income income, String categoryName);
 
     Long totalExpense(Long userId);
 

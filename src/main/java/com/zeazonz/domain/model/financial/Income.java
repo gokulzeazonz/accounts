@@ -1,5 +1,8 @@
 package com.zeazonz.domain.model.financial;
 
+import com.zeazonz.domain.model.category.Category;
+import com.zeazonz.domain.model.user.User;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -7,40 +10,11 @@ import java.util.Date;
 @Table(name = "income")
 public class Income {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @Column(name  = "category_id")
+    /*@Column(name  = "category_id")
     private Long category_id;
 
     @Column(name  = "user_id")
     private Long user_id;
-
-    @Column(name  = "date")
-    private Date date;
-
-    @Column(name  = "amount")
-    private Long amount;
-
-
-    public Income() {
-    }
-
-    public Income(Long category_id, Long user_id, Date date, Long amount) {
-        this.category_id = category_id;
-        this.user_id = user_id;
-        this.date = date;
-        this.amount = amount;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Long getCategory_id() {
         return category_id;
@@ -56,6 +30,61 @@ public class Income {
 
     public void setUser_id(Long user_id) {
         this.user_id = user_id;
+    }*/
+
+
+
+    @ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY , targetEntity = Category.class)
+    private Category category;
+
+    @ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY , targetEntity = User.class)
+    private User user;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
+    ///////////////////////////////////////////////////////////////////////
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column(name  = "date")
+    private Date date;
+
+    @Column(name  = "amount")
+    private Long amount;
+
+
+    public Income() {
+    }
+
+    public Income( Date date, Long amount) {
+//        this.category_id = category_id;
+//        this.user_id = user_id;
+        this.date = date;
+        this.amount = amount;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Date getDate() {
@@ -73,4 +102,5 @@ public class Income {
     public void setAmount(Long amount) {
         this.amount = amount;
     }
+
 }

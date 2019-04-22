@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Entity
-@Table(name="user")
+@Table(name="account_user")
 public class User {
 
     @Id
@@ -25,7 +25,7 @@ public class User {
     private Email email;
 
     /**
-     * must contain at least 1 number and 1 lower & upper case letters , must have atleast 6 characters
+     * must contain at least 1 number and 1 lower & upper case letters , must have at least 6 characters
      * */
     @Column(name  = "password")
     private String password;
@@ -33,14 +33,14 @@ public class User {
     public User() {
     }
 
-    public User(String name, Address address, Email email, String password) {
+    public User(String name, Address address, Email email, String password)  throws UserInvalidException{
         Preconditions.checkNotNull(name);
         Preconditions.checkNotNull(address);
         Preconditions.checkNotNull(email);
         Preconditions.checkNotNull(password);
 
         if(!isValidPassword(password)){
-            throw new UserInvalidException("Password must contain at least 1 digit, atleast 1 lower & upper case letters , must have at least 6 characters");
+            throw new UserInvalidException("Password must contain at least 1 digit, at least 1 lower & upper case letters , must have at least 6 characters");
         }
 
         this.name = name;
@@ -94,4 +94,5 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

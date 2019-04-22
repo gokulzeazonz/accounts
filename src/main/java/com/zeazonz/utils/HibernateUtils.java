@@ -6,6 +6,8 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+import java.util.Arrays;
+
 public class HibernateUtils {
     private static Configuration configuration;
     private static StandardServiceRegistry serviceRegistry;
@@ -25,13 +27,25 @@ public class HibernateUtils {
         }
     }
 
-    public static SessionFactory getSessionFactory(Class<?>[] classes) {
+    public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
+            sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+        }
+        return sessionFactory;
+    }
+
+   /* public static SessionFactory getSessionFactory(Class<?>[] classes) {
+        if (sessionFactory == null) {
+
+//            Arrays.asList(classes).forEach((class1)->{
+//                configuration.addAnnotatedClass(class1);
+//            });
+
             for(Class<?> classs:classes){
                 configuration.addAnnotatedClass(classs);
             }
             sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         }
         return sessionFactory;
-    }
+    }*/
 }

@@ -15,6 +15,9 @@ public class Address {
     @Column(name  = "city")
     private String city;
 
+    @Column(name  = "district")
+    private String district;
+
     @Column(name  = "state")
     private String state;
 
@@ -24,10 +27,11 @@ public class Address {
     public Address() {
     }
 
-    public Address(String houseName, String street, String city, String state, String country) {
+    public Address(String houseName, String street, String city, String district, String state, String country) {
         this.houseName = houseName;
         this.street = street;
         this.city = city;
+        this.district = district;
         this.state = state;
         this.country = country;
     }
@@ -54,6 +58,14 @@ public class Address {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
     }
 
     public String getState() {

@@ -1,10 +1,9 @@
 package com.zeazonz.domain.model.category;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "category")
 public class Category {
 
     @Id

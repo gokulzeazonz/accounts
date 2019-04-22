@@ -14,7 +14,7 @@ public class Email {
 
     public Email(){}
 
-    Email(String email){
+    public Email(String email)  throws UserInvalidException{
         EmailValidator emailValidator = EmailValidator.getInstance();
         if(!emailValidator.isValid(email)){
             throw new UserInvalidException("Invalid email...");
