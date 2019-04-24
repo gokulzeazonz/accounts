@@ -8,7 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import javax.persistence.StoredProcedureQuery;
+import javax.persistence.Query;
 import java.util.Optional;
 
 public class UserRepositoryImpl implements UserRepository {
@@ -49,7 +49,7 @@ public class UserRepositoryImpl implements UserRepository {
     public Optional<User> findUserByEmailAndPassword(Email email, String password) {
         Session session = getSession();
         try {
-            StoredProcedureQuery query = session.createStoredProcedureQuery("From com.zeazonz.domain.model.user.User where email=? and password=?");
+            Query query = session.createStoredProcedureQuery("From com.zeazonz.domain.model.user.User where email=?1 and password=?2");
             query.setParameter(1,email.getEmail());
             query.setParameter(2,password);
             User user = (User) query.getSingleResult();
