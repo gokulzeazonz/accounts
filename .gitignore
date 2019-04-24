@@ -3,4 +3,5 @@ build/
 ./gradle
 build-cache/
 out/
+test/
 *.iml
